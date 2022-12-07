@@ -57,6 +57,7 @@ def get_pet_labels(image_dir):
             and splits them by _ (underscore). Making pet_image a list of the derived names
             """
             
+            #create pet_label starting as empty string
             pet_label = ""  
             
             
@@ -82,7 +83,6 @@ def get_pet_labels(image_dir):
              
                 
        
-
     # Replace None with the results_dic dictionary that you created with this
     # function
     return results_dic
