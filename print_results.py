@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: DAVID EMMANUEL
+# DATE CREATED: 29/11/2022
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -100,7 +100,6 @@ def print_results(results_dic, results_stats_dic, model,
 
         # process through results dict, printing incorrectly classified breeds
         for key in results_dic:
-
             # Pet Image Label is-a-Dog, classified as-a-dog but is WRONG breed
             if ( sum(results_dic[key][3:]) == 2 and
                 results_dic[key][2] == 0 ):
