@@ -50,7 +50,27 @@ def get_pet_labels(image_dir):
        # isn't an pet image file
         if in_files[idx][0] != ".":
             # Creates temporary label variable to hold pet label name extracted 
-            pet_label = ""
+            
+            pet_image = in_files[idx].lower().split("_")
+            """
+            Iterates over items in in_files, sets string to lowercase letters 
+            and splits them by _ (underscore). Making pet_image a list of the derived names
+            """
+            
+            pet_label = ""  
+            
+            
+            for word in pet_image:
+                if word.isalpha():
+                    pet_label += word + " "
+            """
+            Loops to check if word in pet_image is only
+            alphabetic characters - if true, append word
+            to pet_label
+            """
+            
+            pet_label = petlabel.strip()
+            #Strips off starting/trailing whitespace in pet_label
             
             if in_files[idx] not in results_dic:
                 results_dic[in_files[idx]] = [pet_label]
