@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/adjust_results4_isadog.py
 #                                                                             
-# PROGRAMMER: 
+# PROGRAMMER: DAVID EMMANUEL
 # DATE CREATED:                                 
 # REVISED DATE: 
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
@@ -66,5 +66,47 @@ def adjust_results4_isadog(results_dic, dogfile):
                maltese) (string - indicates text file's filename)
     Returns:
            None - results_dic is mutable data type so no return needed.
-    """           
+    """
+    # Creates dognames dictionary for quick matching to results_dic labels from
+    # real answer & classifier's answer
+    dognames_dic = dict()
+    
+    # Reads in dognames from file, 1 name per line & automatically closes file
+    with open(dogfile, "r") as infile:
+        # Reads in dognames from first line in file
+        line = infile.readline()
+        
+        # Processes each line in file until reaching EOF (end-of-file) by 
+        # processing line and adding dognames to dognames_dic with while loop
+        while line != "":
+            line = line.rstrip()
+            
+            if line in dognames_dic:
+                print("Duplicate files exist in dictionary")
+            else:
+                dognames_dic[line] = 1
+                
+            line = infile.readline()
+        
+        
+        for key in results_dic:
+            if results_dic[key][0] in dognames_dic:
+                
+                if results_dic[key][1] in dognames_dic:
+                    results_dic[key].extend((1, 1))
+                    
+                else:
+                    results_dic[key].extend((1,0))
+            
+            else:
+                if results_dic[key][1] in dognames_dic:
+                    results_dic[key].extend((0,1))
+                    
+                else:
+                    results_dic[key].extend((0,0))
+                
+                
+            
+    
+    
     None
