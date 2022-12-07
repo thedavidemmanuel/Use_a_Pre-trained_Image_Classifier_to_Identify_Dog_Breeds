@@ -70,7 +70,7 @@ def get_pet_labels(image_dir):
             to pet_label
             """
             
-            pet_label = petlabel.strip()
+            pet_label = pet_label.strip()
             #Strips off starting/trailing whitespace in pet_label
             
             if in_files[idx] not in results_dic:
